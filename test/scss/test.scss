@@ -5,11 +5,31 @@
 @import '../../sass/layout';
 
 
+// [mixin] micro-clearfix
+// ----------------------
+@include test-module('micro-clearfix') {
+  @include test('Clearfix it!') {
+    @include assert('Adds a micro-clearfix to an element') {
+      @include input {
+        @include micro-clearfix;
+      }
+
+      @include expect {
+        &:after {
+          clear: both;
+          content: ' ';
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
 // [mixin] global-box-sizing
 // -------------------------
 @include test-module('Global Box-Sizing') {
-
-  @include test('Sets box-sizing on all elements') {
+  @include test('Box-sizing on all elements') {
     @include assert('Nested items should use border-box model.') {
       @include input {
         @include global-box-sizing(border-box);
@@ -24,7 +44,70 @@
       }
     }
   }
+
+  @include test('Inherited box-sizing') {
+    @include assert('Nested items should inherit box model.') {
+      @include input {
+        @include global-box-sizing(border-box, inherit);
+      }
+
+      @include expect {
+        box-sizing: border-box;
+
+        *,
+        *:before,
+        *:after {
+          box-sizing: inherit;
+        }
+      }
+    }
+  }
 }
 
 
-@include report;
+// [mixin] stretch
+// ---------------
+
+@include test-module('stretch') {
+  @include test('Position element off edges') {
+    @include assert('Element is given fixed offset from viewport') {
+      @include input {
+        @include stretch(1em, 0, null, false, fixed);
+      }
+
+      @include expect {
+        position: fixed;
+        right: 0;
+        top: 1em;
+      }
+    }
+  }
+
+  @include test('Stretch-x shortcut') {
+    @include assert('Element is given absolute x-offset') {
+      @include input {
+        @include stretch-x(1em);
+      }
+
+      @include expect {
+        left: 1em;
+        position: absolute;
+        right: 1em;
+      }
+    }
+  }
+
+  @include test('Stretch-y shortcut') {
+    @include assert('Element is given absolute y-offset') {
+      @include input {
+        @include stretch-y(1em, 0);
+      }
+
+      @include expect {
+        bottom: 0;
+        position: absolute;
+        top: 1em;
+      }
+    }
+  }
+}

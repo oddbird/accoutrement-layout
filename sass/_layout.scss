@@ -17,16 +17,12 @@
   $inherit: false
 ) {
   @if $inherit {
-    @at-root {
-      html {
-        box-sizing: $box;
-      }
+    box-sizing: $box;
 
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
-      }
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
     }
   } @else {
     *,
@@ -38,35 +34,37 @@
 }
 
 
-// Reset the box model measurements.
-// @see `compass/utilities/reset`
-@mixin reset-box-model {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-
-// stretch element height to specified top and bottom position
-// @see `compass/layout/stretching'
-@mixin stretch-y($offset-top:0, $offset-bottom:0) {
-  @include stretch($offset-top, false, $offset-bottom, false);
+// stretch element height and width
+@mixin stretch(
+  $top: 0,
+  $right: $top,
+  $bottom: $top,
+  $left: $right,
+  $position: absolute
+) {
+  bottom: $bottom or null;
+  left: $left or null;
+  position: $position or null;
+  right: $right or null;
+  top: $top or null;
 }
 
 
 // stretch element width to specified left and right position
-// @see `compass/layout/stretching'
-@mixin stretch-x($offset-left:0, $offset-right:0) {
-  @include stretch(false, $offset-right, false, $offset-left);
+@mixin stretch-x(
+  $left: 0,
+  $right: $left,
+  $position: absolute
+) {
+  @include stretch(false, $right, false, $left, $position);
 }
 
 
-// shorthand to stretch element height and width
-// @see `compass/layout/stretching'
-@mixin stretch($offset-top:0, $offset-right:0, $offset-bottom:0, $offset-left:0) {
-  position: absolute;
-  @if $offset-top { top: $offset-top; }
-  @if $offset-bottom { bottom: $offset-bottom; }
-  @if $offset-left { left: $offset-left; }
-  @if $offset-right { right: $offset-right; }
+// stretch element height to specified top and bottom position
+@mixin stretch-y(
+  $top: 0,
+  $bottom: $top,
+  $position: absolute
+) {
+  @include stretch($top, false, $bottom, false, $position);
 }
