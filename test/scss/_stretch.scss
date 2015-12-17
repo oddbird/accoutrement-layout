@@ -24,7 +24,7 @@
 // Stetch-x
 // --------
 @include test-module('Stretch-x [mixin]') {
-  @include test('Shortcut') {
+  @include test('Position element horizontally') {
     @include assert('Element is given absolute x-offset') {
       @include input {
         @include stretch-x(1em);
@@ -43,7 +43,7 @@
 // Stetch-y
 // --------
 @include test-module('Stretch-y [mixin]') {
-  @include test('Shortcut') {
+  @include test('Position element vertically') {
     @include assert('Element is given absolute y-offset') {
       @include input {
         @include stretch-y(1em, 0);
