@@ -12,10 +12,12 @@
       }
 
       @include expect {
-        *,
-        *:before,
-        *:after {
-          box-sizing: border-box;
+        * {
+          &,
+          &:before,
+          &:after {
+            box-sizing: border-box;
+          }
         }
       }
     }
@@ -30,10 +32,12 @@
       @include expect {
         box-sizing: border-box;
 
-        *,
-        *:before,
-        *:after {
-          box-sizing: inherit;
+        * {
+          &,
+          &:before,
+          &:after {
+            box-sizing: inherit;
+          }
         }
       }
     }

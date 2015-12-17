@@ -17,16 +17,20 @@
   @if $inherit {
     box-sizing: $box;
 
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
+    * {
+      &,
+      &:before,
+      &:after {
+        box-sizing: inherit;
+      }
     }
   } @else {
-    *,
-    *:before,
-    *:after {
-      box-sizing: $box;
+    * {
+      &,
+      &:before,
+      &:after {
+        box-sizing: $box;
+      }
     }
   }
 }
