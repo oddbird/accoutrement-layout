@@ -1,70 +1,7 @@
 // Layout Helpers
 // ==============
 
-// Clearfix
-@mixin micro-clearfix {
-  &:after {
-    clear: both;
-    content: ' ';
-    display: block;
-  }
-}
-
-
-// Box Sizing
-@mixin global-box-sizing(
-  $box: border-box,
-  $inherit: false
-) {
-  @if $inherit {
-    box-sizing: $box;
-
-    *,
-    *:before,
-    *:after {
-      box-sizing: inherit;
-    }
-  } @else {
-    *,
-    *:before,
-    *:after {
-      box-sizing: $box;
-    }
-  }
-}
-
-
-// stretch element height and width
-@mixin stretch(
-  $top: 0,
-  $right: $top,
-  $bottom: $top,
-  $left: $right,
-  $position: absolute
-) {
-  bottom: $bottom or null;
-  left: $left or null;
-  position: $position or null;
-  right: $right or null;
-  top: $top or null;
-}
-
-
-// stretch element width to specified left and right position
-@mixin stretch-x(
-  $left: 0,
-  $right: $left,
-  $position: absolute
-) {
-  @include stretch(false, $right, false, $left, $position);
-}
-
-
-// stretch element height to specified top and bottom position
-@mixin stretch-y(
-  $top: 0,
-  $bottom: $top,
-  $position: absolute
-) {
-  @include stretch($top, false, $bottom, false, $position);
-}
+@import 'box-sizing';
+@import 'clearfix';
+@import 'hidden';
+@import 'stretch';
