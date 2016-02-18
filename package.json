@@ -1,6 +1,6 @@
 {
   "name": "accoutrement-layout",
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0-rc.2",
   "description": "Layout helpers",
   "homepage": "https://github.com/oddbird/accoutrement-layout",
   "main": "sass/_layout.scss",
@@ -28,8 +28,9 @@
     "eyeglass-module"
   ],
   "eyeglass": {
-    "exports": "eyeglass-exports.js",
-    "needs": "*"
+    "needs": "^0.8.2",
+    "sassDir": "./_mq.scss",
+    "exports": false
   },
   "scripts": {
     "test": "node_modules/.bin/mocha",
