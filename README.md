@@ -1,12 +1,17 @@
 Accoutrement-Layout
 ===================
 
-Sass layout utilities,
-including a float clearfix,
-accessibility tools,
+Sass layout [Accoutrement][accoutrement]
+by [OddBird][oddbird].
+Provides layout utilities
+such as media-query helpers,
+a float clearfix,
 global box-sizing,
 positioning shortcuts,
 and fluid aspect ratios.
+
+[accoutrement]: http://oddbird.net/accoutrement/
+[oddbird]: http://oddbird.net/
 
 
 Quick Start
@@ -16,15 +21,42 @@ Quick Start
 npm install accoutrement-layout
 ```
 
+Import the library:
 
-About OddBird Accoutrement
---------------------------
+```scss
+@import 'path/to/accoutrement-layout/sass/layout'
+```
 
-[OddBird][oddbird]'s **Accoutrement** modules
-are individual Sass toolkits
-that work together to form
-the central nervous system of a project.
-They help to establish and access a projects configuration
-in consistent and inter-connected ways.
+Establish your media-query breakpoints,
+or use sizes from [Accoutrement-Scale][scale] directly:
 
-[oddbird]: http://oddbird.net/
+```scss
+$sizes: (
+  'page': 36rem,
+);
+
+$breakpoints: (
+  'banner-text': 24em,
+);
+```
+
+Access your breakpoints with
+`above()`, `below()`, and `between()` mixins.
+When possible `em` and `rem` units will be converted to
+browser-default relative `em` sizes:
+
+```
+.banner-text {
+  display: none;
+
+  @include above('banner-text') {
+    display: block;
+  }
+}
+
+.container {
+  @include below('page') {
+    padding: .5em;
+  }
+}
+```
