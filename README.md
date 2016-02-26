@@ -60,3 +60,5 @@ browser-default relative `em` sizes:
   }
 }
 ```
+
+[scale]: http://oddbird.net/accoutrement-scale/sassdoc/
