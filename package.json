@@ -1,6 +1,6 @@
 {
   "name": "accoutrement-layout",
-  "version": "2.0.0-rc.2",
+  "version": "2.0.0",
   "description": "Layout helpers",
   "homepage": "https://github.com/oddbird/accoutrement-layout",
   "main": "sass/_layout.scss",
@@ -11,7 +11,7 @@
   "devDependencies": {
     "chalk": "^1.1.1",
     "gulp": "^3.9.0",
-    "gulp-sass-lint": "^1.1.0",
+    "gulp-sass-lint": "^1.1.1",
     "gulp-util": "^3.0.7",
     "mocha": "^2.3.4",
     "sass-true": "^2.0.3",
