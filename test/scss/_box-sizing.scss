@@ -7,7 +7,7 @@
 @include test-module('Global Box-Sizing [mixin]') {
   @include test('Box-sizing on all elements') {
     @include assert('Nested items should use border-box model.') {
-      @include input {
+      @include output {
         @include global-box-sizing(border-box);
       }
 
@@ -25,7 +25,7 @@
 
   @include test('Inherited box-sizing') {
     @include assert('Nested items should inherit box model.') {
-      @include input {
+      @include output {
         @include global-box-sizing(border-box, inherit);
       }
 

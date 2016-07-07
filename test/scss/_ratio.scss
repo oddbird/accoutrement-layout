@@ -60,7 +60,7 @@ $aspect-ratios: (
 @include test-module('Fluid Ratio [mixin]') {
   @include test('Establish fluid container') {
     @include assert('Fluid output based on aspect ratio') {
-      @include input {
+      @include output {
         @include fluid-ratio('widescreen', 100%);
       }
 

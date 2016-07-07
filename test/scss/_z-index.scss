@@ -38,7 +38,7 @@ $z-index: (
 @include test-module('Z-Index [mixin]') {
   @include test('Set z-index property') {
     @include assert('Z-Index property is set based on list index') {
-      @include input {
+      @include output {
         @include z-index('dropdown');
       }
 

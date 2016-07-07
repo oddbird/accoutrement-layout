@@ -15,7 +15,7 @@
     "gulp-util": "^3.0.7",
     "mocha": "^2.3.4",
     "sass-lint": "^1.7.0",
-    "sass-true": "^2.0.3",
+    "sass-true": "^2.1.2",
     "sassdoc": "^2.1.20",
     "sassdoc-theme-herman": "^0.2.0"
   },
