@@ -14,18 +14,24 @@ $accoutrement-query-context: ();
 @function _get-breakpoint(
   $break
 ) {
-  @if function-exists('browser-ems') {
-    @return browser-ems($break);
-  } @else if function-exists('size') {
-    @return size($break);
-  } @else if variable-exists('sizes') {
-    @return map-get($sizes, $break) or $break;
-  } @else if variable-exists('breakpoints') {
+  @if variable-exists('breakpoints') and map-get($breakpoints, $break) {
     $break: map-get($breakpoints, $break) or $break;
 
     @if map-has-key($breakpoints, $break) {
       $break: _get-breakpoint($break);
     }
+  }
+
+  @if function-exists('size') and map-get($sizes, $break) {
+    $break: size($break);
+  }
+
+  @if type-of($break) != 'number' {
+    @error '"#{$break}" isn\'t a valid breakpoint length or user-defined keyword.';
+  }
+
+  @if function-exists('browser-ems') {
+    @return browser-ems($break);
   }
 
   @return $break;

@@ -1,12 +1,19 @@
 // Media Query Tests
 // =================
 
+@import '../../node_modules/accoutrement-scale/sass/scale';
 
 $breakpoints: (
   'off-canvas': 45em,
   'recursive': 'off-canvas',
   'meta': 'recursive',
   'useful': 'meta',
+  'p-break': 'page',
+);
+
+$sizes: (
+  'off-canvas': 30em,
+  'page': 50em,
 );
 
 
@@ -20,11 +27,18 @@ $breakpoints: (
       'Returns an explicit length directly.');
   }
 
+  @include test('Browser Em conversion') {
+    @include assert-equal(
+      _get-breakpoint(800px),
+      50em,
+      'Returns an explicit length converted to browser ems.');
+  }
+
   @include test('Named breakpoint') {
     @include assert-equal(
       _get-breakpoint('off-canvas'),
       45em,
-      'Returns a named breakpoint.');
+      'Returns a named breakpoint from the proper map.');
   }
 
   @include test('Recursive breakpoint') {
@@ -32,5 +46,19 @@ $breakpoints: (
       _get-breakpoint('useful'),
       45em,
       'Returns a recursively named breakpoint.');
+  }
+
+  @include test('Accoutrement-scale definition') {
+    @include assert-equal(
+      _get-breakpoint('page'),
+      50em,
+      'Returns a named size from accoutrement-scale.');
+  }
+
+  @include test('Accoutrement-scale recursive cross-over references') {
+    @include assert-equal(
+      _get-breakpoint('p-break'),
+      50em,
+      'Returns a named size from both maps cross-referenced.');
   }
 }
