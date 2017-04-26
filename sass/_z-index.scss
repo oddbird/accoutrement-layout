@@ -67,8 +67,6 @@ $z-index: ();
 /// @group z-index
 /// @param {String} $layer -
 ///   The name of a z-index layer in your configuration.
-/// @require {Function} z-index
-/// @require {Variable} $z-index
 /// @output -
 ///   The z-index property with a value based on your configuration.
 @mixin z-index(
