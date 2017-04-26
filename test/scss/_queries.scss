@@ -62,3 +62,89 @@ $sizes: (
       'Returns a named size from both maps cross-referenced.');
   }
 }
+
+
+// Apply Query
+// -----------
+@include test-module('Apply Query [mixin]') {
+  @include test('Applies query, and sets context') {
+    @include assert {
+      @include output {
+        @include _apply-query('Test-Query', '(max-width: 3em)') {
+          @each $key, $value in $accoutrement-query-context {
+            #{$key}: "#{$value}";
+          }
+        }
+      }
+
+      @include expect {
+        @media (max-width: 3em) {
+          Test-Query: "(max-width: 3em)";
+        }
+      }
+    }
+  }
+}
+
+
+// Below
+// -----
+@include test-module('Below [mixin]') {
+  @include test('Applies max-width query, with ~1px subtracted') {
+    @include assert {
+      @include output {
+        @include below(30em) {
+          test: content;
+        }
+      }
+
+      @include expect {
+        @media (max-width: 29.99em) {
+          test: content;
+        }
+      }
+    }
+  }
+}
+
+
+// Above
+// -----
+@include test-module('Above [mixin]') {
+  @include test('Applies min-width query') {
+    @include assert {
+      @include output {
+        @include above(30em) {
+          test: content;
+        }
+      }
+
+      @include expect {
+        @media (min-width: 30em) {
+          test: content;
+        }
+      }
+    }
+  }
+}
+
+
+// Between
+// -------
+@include test-module('Between [mixin]') {
+  @include test('Applies min and max-width queries') {
+    @include assert {
+      @include output {
+        @include between(30em, 40em) {
+          test: content;
+        }
+      }
+
+      @include expect {
+        @media (min-width: 30em) and (max-width: 39.99em) {
+          test: content;
+        }
+      }
+    }
+  }
+}

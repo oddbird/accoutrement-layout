@@ -66,6 +66,13 @@ $accoutrement-query-context: ();
 ) {
   $name: 'below `#{$max}`';
   $max: _get-breakpoint($max);
+
+  @if unit($max) == 'em' {
+    $max: $max - 0.01;
+  } @else if comparable($max, 1px) {
+    $max: $max - 1px;
+  }
+
   $query: '(max-#{$prop}: #{$max})';
 
   @include _apply-query($name, $query) {
@@ -102,6 +109,13 @@ $accoutrement-query-context: ();
   $name: 'between `#{$min}` and `#{$max}`';
   $min: _get-breakpoint($min);
   $max: _get-breakpoint($max);
+
+  @if unit($max) == 'em' {
+    $max: $max - 0.01;
+  } @else if comparable($max, 1px) {
+    $max: $max - 1px;
+  }
+
   $query: '(min-#{$prop}: #{$min}) and (max-#{$prop}: #{$max})';
 
   @include _apply-query($name, $query) {
