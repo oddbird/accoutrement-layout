@@ -2,64 +2,42 @@
 // =============
 
 
-
-// Accoutrement Query Context
-// --------------------------
-$accoutrement-query-context: ();
-
-
-
-// Get Breakpoint [function]
-// -------------------------
-@function _get-breakpoint(
-  $break
-) {
-  @if variable-exists('breakpoints') and map-get($breakpoints, $break) {
-    $break: map-get($breakpoints, $break) or $break;
-
-    @if map-has-key($breakpoints, $break) {
-      $break: _get-breakpoint($break);
-    }
-  }
-
-  @if function-exists('size') and map-get($sizes, $break) {
-    $break: size($break);
-  }
-
-  @if type-of($break) != 'number' {
-    @error '"#{$break}" isn\'t a valid breakpoint length or user-defined keyword.';
-  }
-
-  @if function-exists('browser-ems') {
-    @return browser-ems($break);
-  }
-
-  @return $break;
-}
-
-
-
-// Apply Query [mixin]
-// -------------------
-@mixin _apply-query(
-  $name,
-  $query
-) {
-  $context: ($name: $query);
-  $context: map-merge($accoutrement-query-context, $context);
-  $accoutrement-query-context: $context !global;
-
-  @media #{$query} {
-    @content;
-  }
-
-  $accoutrement-query-context: map-remove($accoutrement-query-context, $name) !global;
-}
+// Breakpoints
+// -----------
+/// Establish a map of named breakpoints.
+///
+/// If you have [Accoutrement-Scale](http://oddbird.net/accoutrement-scale/)
+/// installed, you can use the scale syntax
+/// for describing size-relationships and adjustments –
+/// and even reference `$sizes` as though they are `$breakpoints`.
+///
+/// @group config
+///
+/// @example scss - defining breakpoints
+///   $breakpoints: (
+///     'small': 30em,
+///     'medium': 45em,
+///   );
+/// @example scss - using accoutrement-scale
+///   $breakpoints: (
+///     'small': 30em ('convert-units': 'browser-ems'),
+///     'medium': 'small' ('times': 1.5),
+///   );
+$breakpoints: () !default;
 
 
 
 // Below [mixin]
 // -------------
+/// Generate a max–<`width`/`height`> query,
+/// for styling elements below the given viewport width.
+/// @group queries
+/// @param {length | string} $max -
+///   The name of a documented breakpoint/size,
+///   or an arbitarty length to use in the query.
+/// @param {'width' | 'height'} $prop ['width'] -
+///   The property (width or height) to test against,
+///   for a result of e.g. `(max-width: 30em)`.
 @mixin below(
   $max,
   $prop: 'width'
@@ -84,6 +62,15 @@ $accoutrement-query-context: ();
 
 // Above [mixin]
 // -------------
+/// Generate a min-<`width`/`height`> query,
+/// for styling elements above the given viewport width.
+/// @group queries
+/// @param {length | string} $min -
+///   The name of a documented breakpoint/size,
+///   or an arbitarty length to use in the query.
+/// @param {'width' | 'height'} $prop ['width'] -
+///   The property (width or height) to test against,
+///   for a result of e.g. `(min-width: 30em)`.
 @mixin above(
   $min,
   $prop: 'width'
@@ -101,6 +88,18 @@ $accoutrement-query-context: ();
 
 // Between [mixin]
 // ---------------
+/// Generate a min-and-max-<`width`/`height`> query,
+/// for styling elements between given viewport widths.
+/// @group queries
+/// @param {length | string} $min -
+///   The name of a documented breakpoint/size,
+///   or an arbitarty length to use as a minimum in the query.
+/// @param {length | string} $max -
+///   The name of a documented breakpoint/size,
+///   or an arbitarty length to use as a maximum in the query.
+/// @param {'width' | 'height'} $prop ['width'] -
+///   The property (width or height) to test against,
+///   for a result of e.g. `(min-width: 30em)`.
 @mixin between(
   $min,
   $max,

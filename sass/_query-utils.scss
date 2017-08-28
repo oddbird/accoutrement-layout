@@ -1,0 +1,76 @@
+// Query Utils
+// ===========
+
+
+// Browser Default Font Size
+// -------------------------
+/// The default font-size used by most browsers.
+/// @access private
+$_BROWSER-DEFAULT-FONT-SIZE: 16px; // sass-lint:disable-line variable-name-format
+
+
+// Accoutrement Query Context
+// --------------------------
+/// Track context in media-queries…
+/// @access private
+$_accoutrement-query-context: ();
+
+
+// Get Breakpoint [function]
+// -------------------------
+/// Return a breakpoint from the `$breakpoint` map,
+/// or the accoutrement-scale `$sizes` map if it's available.
+/// @access private
+/// @param {string} $break -
+///   The name or
+@function _get-breakpoint(
+  $break
+) {
+  @if (type-of($break) == 'number') and not unitless($break) {
+    @return $break;
+  }
+
+  @if map-get($breakpoints, $break) {
+    $break: map-get($breakpoints, $break) or $break;
+
+    @if map-has-key($breakpoints, $break) {
+      $break: _get-breakpoint($break);
+    }
+  }
+
+  $accoutrement-scale: function-exists('size') and variable-exists('sizes');
+
+  @if $accoutrement-scale and map-get($sizes, $break) {
+    $break: size($break);
+  }
+
+  @if type-of($break) != 'number' or unitless($break) {
+    @error '"#{$break}" isn’t a valid length or keyword.';
+  }
+
+  @return $break;
+}
+
+
+// Apply Query [mixin]
+// -------------------
+/// Applies a query to the CSS, and documents it in the context.
+/// @access private
+/// @param {string} $name -
+///   The name of the query being applied.
+/// @param {string} $query -
+///   The media query to apply, e.g. `(min-width: 30em)`.
+@mixin _apply-query(
+  $name,
+  $query
+) {
+  $context: ($name: $query);
+  $context: map-merge($_accoutrement-query-context, $context);
+  $_accoutrement-query-context: $context !global;
+
+  @media #{$query} {
+    @content;
+  }
+
+  $_accoutrement-query-context: map-remove($_accoutrement-query-context, $name) !global;
+}

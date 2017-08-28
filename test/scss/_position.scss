@@ -1,0 +1,95 @@
+// Stretch Tests
+// =============
+
+
+// Position
+// --------
+@include test-module('Position [mixin]') {
+  @include test('Defaults to absolute positioning with no offsets') {
+    @include assert {
+      @include output {
+        @include position();
+      }
+
+      @include expect {
+        position: absolute;
+      }
+    }
+  }
+
+  @include test('Changes positioning type') {
+    @include assert {
+      @include output {
+        @include position('fixed');
+        @include position(fixed);
+      }
+
+      @include expect {
+        position: fixed;
+        position: fixed;
+      }
+    }
+  }
+
+  @include test('Propogates a single offset value') {
+    @include assert {
+      @include output {
+        @include position(0 fixed);
+      }
+
+      @include expect {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+  @include test('Propogates two offset values') {
+    @include assert {
+      @include output {
+        @include position(0 auto relative);
+      }
+
+      @include expect {
+        bottom: 0;
+        left: auto;
+        position: relative;
+        right: auto;
+        top: 0;
+      }
+    }
+  }
+
+  @include test('Propogates three offset values') {
+    @include assert {
+      @include output {
+        @include position(null auto 1em);
+      }
+
+      @include expect {
+        bottom: 1em;
+        left: auto;
+        position: absolute;
+        right: auto;
+      }
+    }
+  }
+
+  @include test('Propogates four offset values') {
+    @include assert {
+      @include output {
+        @include position(relative null auto 1em 20px);
+      }
+
+      @include expect {
+        bottom: 1em;
+        left: 20px;
+        position: relative;
+        right: auto;
+      }
+    }
+  }
+}

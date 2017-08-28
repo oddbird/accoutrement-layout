@@ -4,9 +4,10 @@
 
 // Default Aspect Ratios
 // ---------------------
-/// Some named ratios you can use.
+/// Some named ratios you can use,
+/// but shouldn't edit.
 /// @group fluid-ratios
-$accoutrement-aspect-ratios: (
+$_ACCOUTREMENT-ASPECT-RATIOS: (  // sass-lint:disable-line variable-name-format
   'octave': 2,
   'major-seventh': 15 / 8,
   'minor-seventh': 16 / 9,
@@ -37,15 +38,16 @@ $aspect-ratios: () !default;
 
 // Get Aspect Ratio
 // ----------------
+/// Retrieve an aspect ratio from the maps.
 /// @access private
-/// @param {String | Float} $ratio -
+/// @param {string | float} $ratio -
 ///   A ratio or ratio keyword to be resolved
-/// @return {Float} -
+/// @return {float} -
 ///   The ratio associated with a keyword, if available.
 @function _get-aspect-ratio(
   $ratio
 ) {
-  $options: map-merge($accoutrement-aspect-ratios, $aspect-ratios);
+  $options: map-merge($_ACCOUTREMENT-ASPECT-RATIOS, $aspect-ratios);  // sass-lint:disable-line variable-name-format
   $ratio: map-get($options, $ratio) or $ratio;
 
   @if map-has-key($options, $ratio) {

@@ -21,7 +21,7 @@ $aspect-ratios: (
   @include test('Get ratio from defaults') {
     @include assert-equal(
       _get-aspect-ratio('octave'),
-      map-get($accoutrement-aspect-ratios, 'octave'),
+      map-get($_ACCOUTREMENT-ASPECT-RATIOS, 'octave'),
       'Returns the value of a key in the default ratios map.');
   }
 
@@ -35,7 +35,7 @@ $aspect-ratios: (
   @include test('Get ratio from recursive settings') {
     @include assert-equal(
       _get-aspect-ratio('retro'),
-      map-get($accoutrement-aspect-ratios, 'fourth'),
+      map-get($_ACCOUTREMENT-ASPECT-RATIOS, 'fourth'),
       'Returns the value of a recursive key.');
   }
 }
