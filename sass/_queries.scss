@@ -31,6 +31,8 @@ $breakpoints: () !default;
 // -------------
 /// Generate a max–<`width`/`height`> query,
 /// for styling elements below the given viewport width.
+/// To help with overlapping min/max queries,
+/// we remove `1px` (or `0.01em`) from every max value.
 /// @group queries
 /// @param {length | string} $max -
 ///   The name of a documented breakpoint/size,
@@ -90,6 +92,8 @@ $breakpoints: () !default;
 // ---------------
 /// Generate a min-and-max-<`width`/`height`> query,
 /// for styling elements between given viewport widths.
+/// To help with overlapping min/max queries,
+/// we remove `1px` (or `0.01em`) from every max value.
 /// @group queries
 /// @param {length | string} $min -
 ///   The name of a documented breakpoint/size,

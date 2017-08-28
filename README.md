@@ -17,14 +17,17 @@ and fluid aspect ratios.
 Quick Start
 -----------
 
+Install the package with npm or yarn
+
 ```bash
 npm install accoutrement-layout
+yarn add accoutrement-layout
 ```
 
 Import the library:
 
 ```scss
-@import 'path/to/accoutrement-layout/sass/layout'
+@import '<path-to>/accoutrement-layout/sass/layout'
 ```
 
 Establish your media-query breakpoints,

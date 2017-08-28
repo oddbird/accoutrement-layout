@@ -5,16 +5,19 @@
 // Z-Index
 // -------
 /// A list of named z-index layers, from lowest to highest index.
-/// Nest lists (one level deep) for different z-index contexts.
+/// Nest lists (one level only) to establish a new z-index context:
+/// The first item will be indexed based on top-level list position,
+/// while additional values are indexed
+/// by their position in the nested list.
 /// @type List
 /// @group z-index
 /// @example scss -
 ///   $z-index: (
-///     'main',
-///     'sidebar',
-///     'banner' 'active-nav' 'dropdown',
-///     'message',
-///     'modal',
+///     'main', // 1
+///     'sidebar', // 2
+///     'banner' 'active-nav' 'dropdown', // 3 2 3
+///     'message', // 4
+///     'modal', // 5
 ///   );
 $z-index: ();
 
