@@ -7,7 +7,7 @@
 /// A small, unobtrusive clearfix for float containers.
 /// @group clearfix
 @mixin clearfix {
-  &:after {
+  &::after {
     clear: both;
     content: ' ';
     display: block;

@@ -13,8 +13,8 @@
 ) {
   * {
     &,
-    &:before,
-    &:after {
+    &::before,
+    &::after {
       box-sizing: $box;
     }
   }

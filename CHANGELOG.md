@@ -4,6 +4,7 @@ Changelog
 3.0.0 – UNRELEASED
 ------------------
 
+- BREAKING: All pseudo-elements (box-sizing, cleafix) use proper `::` syntax.
 - BREAKING: Remove `$inherit` option from `box-sizing`
   (because it's a bad idea to inherit box properties).
   You can still replicate the behavior by setting box-sizing on the root,
