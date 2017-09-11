@@ -11,13 +11,15 @@ Changelog
 - BREAKING: Remove `micro-clearfix` in favor of `clearfix` alias.
   The only other reliable clearfix is `overflow: hidden` -
   and we don't need a mixin for that.
-- BREAKING: Rename `$_accoutrement-query-context` and make it private.
+- BREAKING: Remove `$accoutrement-query-context` and `_apply-query()`
+  for lack of use-cases.
 - BREAKING: Rename `$_ACCOUTREMENT-ASPECT-RATIOS`
   to make it private, and signify that it remains constant.
 - BREAKING: Remove automatic `browser-ems` conversion,
   in favor of explicit breakpoint values/units.
   For unit-conversion and more helpful size-utilities,
   see [Accoutrement-Scale](http://oddbird.net/accoutrement-scale/).
+  Also remove `$_BROWSER-DEFAULT-FONT-SIZE`, since it's no longer needed.
 - BREAKING: Remove `stretch` mixins, as an over-specific use-case.
 - NEW: Add a single `position` mixin using the common TRBL syntax
   to provide a shortcut for positioning properties

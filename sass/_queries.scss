@@ -44,18 +44,10 @@ $breakpoints: () !default;
   $max,
   $prop: 'width'
 ) {
-  $name: 'below `#{$max}`';
-  $max: _get-breakpoint($max);
+  $value: _get-breakpoint($max);
+  $value: _fix-max($value);
 
-  @if unit($max) == 'em' {
-    $max: $max - 0.01;
-  } @else if comparable($max, 1px) {
-    $max: $max - 1px;
-  }
-
-  $query: '(max-#{$prop}: #{$max})';
-
-  @include _apply-query($name, $query) {
+  @media (max-#{$prop}: #{$value}) {
     @content;
   }
 }
@@ -77,11 +69,9 @@ $breakpoints: () !default;
   $min,
   $prop: 'width'
 ) {
-  $name: 'above `#{$min}`';
-  $min: _get-breakpoint($min);
-  $query: '(min-#{$prop}: #{$min})';
+  $value: _get-breakpoint($min);
 
-  @include _apply-query($name, $query) {
+  @media (min-#{$prop}: #{$value}) {
     @content;
   }
 }
@@ -109,19 +99,11 @@ $breakpoints: () !default;
   $max,
   $prop: 'width'
 ) {
-  $name: 'between `#{$min}` and `#{$max}`';
-  $min: _get-breakpoint($min);
-  $max: _get-breakpoint($max);
+  $value-min: _get-breakpoint($min);
+  $value-max: _get-breakpoint($max);
+  $value-max: _fix-max($value-max);
 
-  @if unit($max) == 'em' {
-    $max: $max - 0.01;
-  } @else if comparable($max, 1px) {
-    $max: $max - 1px;
-  }
-
-  $query: '(min-#{$prop}: #{$min}) and (max-#{$prop}: #{$max})';
-
-  @include _apply-query($name, $query) {
+  @media (min-#{$prop}: #{$value-min}) and (max-#{$prop}: #{$value-max}) {
     @content;
   }
 }

@@ -17,6 +17,32 @@ $sizes: (
 );
 
 
+// Fix Max
+// -------
+@include describe('Fix Max [function]') {
+  @include it('Removes 1px from px values') {
+    @include assert-equal(
+      _fix-max(20px),
+      19px
+    );
+  }
+
+  @include it('Removes 0.01em from em values') {
+    @include assert-equal(
+      _fix-max(20em),
+      19.99em
+    );
+  }
+
+  @include it('Returns non-em/px values unchanged') {
+    @include assert-equal(
+      _fix-max(20ch),
+      20ch
+    );
+  }
+}
+
+
 // Get Breakpoint
 // --------------
 @include test-module('Get Breakpoint [function]') {
@@ -55,28 +81,3 @@ $sizes: (
       'Returns a named size from both maps cross-referenced.');
   }
 }
-
-
-// Apply Query
-// -----------
-@include test-module('Apply Query [mixin]') {
-  @include test('Applies query, and sets context') {
-    @include assert {
-      @include output {
-        @include _apply-query('Test-Query', '(max-width: 3em)') {
-          @each $key, $value in $_accoutrement-query-context {
-            #{$key}: "#{$value}";
-          }
-        }
-      }
-
-      @include expect {
-        @media (max-width: 3em) {
-          Test-Query: "(max-width: 3em)";
-        }
-      }
-    }
-  }
-}
-
-
