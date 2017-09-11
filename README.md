@@ -1,7 +1,7 @@
 Accoutrement-Layout
 ===================
 
-Sass layout [Accoutrement][accoutrement]
+Sass layout utilities
 by [OddBird][oddbird].
 Provides layout utilities
 such as media-query helpers,
@@ -10,8 +10,21 @@ global box-sizing,
 positioning shortcuts,
 and fluid aspect ratios.
 
-[accoutrement]: http://oddbird.net/accoutrement/
 [oddbird]: http://oddbird.net/
+
+
+More Accoutrement Tools
+-----------------------
+
+- [Init](http://oddbird.net/accoutrement-init/)
+  provides light-weight browser-normalization.
+- [Color](http://oddbird.net/accoutrement-color/)
+  provides color-palette management and contrast-ratio utilities.
+- [Scale](http://oddbird.net/accoutrement-scale/)
+  helps manage scale patterns like font-sizes, margins, and gutters.
+- [Type](http://oddbird.net/accoutrement-type/)
+  provides webfont management tools,
+  and other typography helpers.
 
 
 Quick Start
