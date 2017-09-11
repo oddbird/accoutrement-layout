@@ -4,8 +4,8 @@
 
 // Below
 // -----
-@include test-module('Below [mixin]') {
-  @include test('Applies max-width query, with ~1px subtracted') {
+@include describe('Below [mixin]') {
+  @include it('Applies max-width query, with ~1px subtracted') {
     @include assert {
       @include output {
         @include below(30em) {
@@ -25,8 +25,8 @@
 
 // Above
 // -----
-@include test-module('Above [mixin]') {
-  @include test('Applies min-width query') {
+@include describe('Above [mixin]') {
+  @include it('Applies min-width query') {
     @include assert {
       @include output {
         @include above(30em) {
@@ -46,8 +46,8 @@
 
 // Between
 // -------
-@include test-module('Between [mixin]') {
-  @include test('Applies min and max-width queries') {
+@include describe('Between [mixin]') {
+  @include it('Applies min and max-width queries') {
     @include assert {
       @include output {
         @include between(30em, 40em) {

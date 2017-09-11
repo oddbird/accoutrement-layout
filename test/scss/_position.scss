@@ -4,8 +4,8 @@
 
 // Position
 // --------
-@include test-module('Position [mixin]') {
-  @include test('Defaults to absolute positioning with no offsets') {
+@include describe('Position [mixin]') {
+  @include it('Defaults to absolute positioning with no offsets') {
     @include assert {
       @include output {
         @include position();
@@ -17,7 +17,7 @@
     }
   }
 
-  @include test('Changes positioning type') {
+  @include it('Changes positioning type') {
     @include assert {
       @include output {
         @include position('fixed');
@@ -31,7 +31,7 @@
     }
   }
 
-  @include test('Propogates a single offset value') {
+  @include it('Propogates a single offset value') {
     @include assert {
       @include output {
         @include position(0 fixed);
@@ -47,7 +47,7 @@
     }
   }
 
-  @include test('Propogates two offset values') {
+  @include it('Propogates two offset values') {
     @include assert {
       @include output {
         @include position(0 auto relative);
@@ -63,7 +63,7 @@
     }
   }
 
-  @include test('Propogates three offset values') {
+  @include it('Propogates three offset values') {
     @include assert {
       @include output {
         @include position(null auto 1em);
@@ -78,7 +78,7 @@
     }
   }
 
-  @include test('Propogates four offset values') {
+  @include it('Propogates four offset values') {
     @include assert {
       @include output {
         @include position(relative null auto 1em 20px);

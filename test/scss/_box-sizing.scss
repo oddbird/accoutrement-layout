@@ -4,8 +4,8 @@
 
 // Global Box-Sizing
 // -----------------
-@include test-module('Global Box-Sizing [mixin]') {
-  @include test('Box-sizing on all elements') {
+@include describe('Global Box-Sizing [mixin]') {
+  @include it('Box-sizing on all elements') {
     @include assert('Nested items should use border-box model.') {
       @include output {
         @include global-box-sizing(border-box);
