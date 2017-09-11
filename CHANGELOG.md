@@ -22,3 +22,38 @@ Changelog
 - NEW: Add a single `position` mixin using the common TRBL syntax
   to provide a shortcut for positioning properties
   (`top`, `right`, `bottom`, `left`, and `position`).
+
+
+2.2.0 - 04/26/17
+----------------
+
+- BREAKING: Remove `1px` or `0.01em` from `max-` property queries,
+  to remove potential overlap
+
+
+2.1.1 - 04/17/17
+-----------------
+
+- BUGFIX: Improved logical hierarchy for accessing named querise
+  across both `$breakpoints` and (accoutrement-scale) `$sizes`
+- TESTING: Update True, and add tests for `_get-breakpoint`
+
+
+2.1.0 - 05/23/16
+-----------------
+
+- NEW: Named z-index tools
+
+
+2.0.0 - 02/25/16
+-----------------
+
+- BREAKING: Remove Bower support
+- NEW: Named media-query tools
+- NEW: Intrinsic ratio tools
+
+
+1.1.0 - 05/13/15
+-----------------
+
+- NEW: Global box-sizing mixin
