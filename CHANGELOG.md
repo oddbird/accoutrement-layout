@@ -1,8 +1,8 @@
 Changelog
 =========
 
-3.0.0 – UNRELEASED
-------------------
+3.0.0 – 09/12/17
+----------------
 
 - BREAKING: All pseudo-elements (box-sizing, cleafix) use proper `::` syntax.
 - BREAKING: Nested items in the `$z-index` list start with `1` rather than `2`,

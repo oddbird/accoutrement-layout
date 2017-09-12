@@ -1,6 +1,6 @@
 {
   "name": "accoutrement-layout",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "description": "Layout helpers",
   "homepage": "http://oddbird.net/accoutrement-layout/",
   "main": "sass/_layout.scss",
