@@ -12,7 +12,7 @@
 /// and even reference `$sizes` as though they are `$breakpoints`.
 /// Otherwise, the map should contain only valid CSS length values.
 ///
-/// @group config
+/// @group queries
 ///
 /// @example scss - defining breakpoints
 ///   $breakpoints: (
@@ -33,14 +33,31 @@ $breakpoints: () !default;
 /// Generate a max–<`width`/`height`> query,
 /// for styling elements below the given viewport width.
 /// To help with overlapping min/max queries,
-/// we remove `1px` (or `0.01em`) from every max value.
+/// we remove `1px` (or `0.01em`) from every max value
+/// to avoid media-query overlap.
+///
 /// @group queries
+///
+/// @link https://zellwk.com/blog/media-query-units/ PX, EM, or REM Media Queries?
+/// @link http://tzi.fr/css/prevent-double-breakpoint Prevent Double Breakpoints
+///
 /// @param {length | string} $max -
 ///   The name of a documented breakpoint/size,
 ///   or an arbitarty length to use in the query.
 /// @param {'width' | 'height'} $prop ['width'] -
 ///   The property (width or height) to test against,
 ///   for a result of e.g. `(max-width: 30em)`.
+///
+/// @example scss -
+///   @include below(30em) {
+///     html { background: red; }
+///   }
+/// @example scss -
+///   $breakpoints: ('red': 30em);
+///
+///   @include below('red') {
+///     html { background: red; }
+///   }
 @mixin below(
   $max,
   $prop: 'width'
@@ -59,13 +76,26 @@ $breakpoints: () !default;
 // -------------
 /// Generate a min-<`width`/`height`> query,
 /// for styling elements above the given viewport width.
+///
 /// @group queries
+///
 /// @param {length | string} $min -
 ///   The name of a documented breakpoint/size,
 ///   or an arbitarty length to use in the query.
 /// @param {'width' | 'height'} $prop ['width'] -
 ///   The property (width or height) to test against,
 ///   for a result of e.g. `(min-width: 30em)`.
+///
+/// @example scss -
+///   @include above(50em) {
+///     html { background: green; }
+///   }
+/// @example scss -
+///   $breakpoints: ('green': 50em);
+///
+///   @include above('green') {
+///     html { background: green; }
+///   }
 @mixin above(
   $min,
   $prop: 'width'
@@ -84,8 +114,14 @@ $breakpoints: () !default;
 /// Generate a min-and-max-<`width`/`height`> query,
 /// for styling elements between given viewport widths.
 /// To help with overlapping min/max queries,
-/// we remove `1px` (or `0.01em`) from every max value.
+/// we remove `1px` (or `0.01em`) from every max value
+/// to avoid media-query overlap.
+///
 /// @group queries
+///
+/// @link https://zellwk.com/blog/media-query-units/ PX, EM, or REM Media Queries?
+/// @link http://tzi.fr/css/prevent-double-breakpoint Prevent Double Breakpoints
+///
 /// @param {length | string} $min -
 ///   The name of a documented breakpoint/size,
 ///   or an arbitarty length to use as a minimum in the query.
@@ -95,6 +131,20 @@ $breakpoints: () !default;
 /// @param {'width' | 'height'} $prop ['width'] -
 ///   The property (width or height) to test against,
 ///   for a result of e.g. `(min-width: 30em)`.
+///
+/// @example scss -
+///   @include between(30em, 50em) {
+///     html { background: yellow; }
+///   }
+/// @example scss -
+///   $breakpoints: (
+///     'red': 30em,
+///     'green': 50em,
+///   );
+///
+///   @include between('red', 'green') {
+///     html { background: yellow; }
+///   }
 @mixin between(
   $min,
   $max,

@@ -11,7 +11,9 @@
 /// and three values will set top/horizontal/bottom values.
 /// Use `null` for a value to keep it from displaying,
 /// and `auto` or `initial` to reset a given value.
+///
 /// @group position
+///
 /// @param {list} $position [null] -
 ///   A shorthand-syntax of positioning values
 ///   using the common TRBL pattern,
@@ -19,6 +21,7 @@
 ///   The position value (absolute, relative, etc)
 ///   defaults to `absolute`.
 /// @output `top`, `right`, `bottom`, `left`, and `position` properties
+///
 /// @example scss - stretch over the full viewport
 ///   .overlay {
 ///     @include position(fixed 0);

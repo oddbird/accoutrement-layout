@@ -25,6 +25,8 @@ Changelog
   For unit-conversion and more helpful size-utilities,
   see [Accoutrement-Scale](http://oddbird.net/accoutrement-scale/).
   Also remove `$_BROWSER-DEFAULT-FONT-SIZE`, since it's no longer needed.
+- BREAKING: `rem` values are treated like `em` values
+  when removing media-query overlap.
 - BREAKING: Remove `stretch` mixins, as an over-specific use-case.
 - NEW: Add a single `position` mixin using the common TRBL syntax
   to provide a shortcut for positioning properties

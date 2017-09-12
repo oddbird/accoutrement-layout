@@ -6,12 +6,12 @@ display:
     - public
 
 groups:
-  - box-sizing: Box Sizing
-  - clearfix: Clearfix
-  - fluid-ratios: Fluid Ratios
-  - queries: Media Queries
-  - stretch: Positioning
-  - z-index: Z-Index
+  box-sizing: Box Sizing
+  clearfix: Clearfix
+  fluid-ratios: Fluid Ratios
+  queries: Media Queries
+  position: Positioning
+  z-index: Z-Index
 
 herman:
   sass:
