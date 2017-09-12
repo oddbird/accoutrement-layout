@@ -15,7 +15,7 @@
 ///   $z-index: (
 ///     'main', // 1
 ///     'sidebar', // 2
-///     'banner' 'active-nav' 'dropdown', // 3 2 3
+///     'banner' 'active-nav' 'dropdown', // 3 1 2
 ///     'message', // 4
 ///     'modal', // 5
 ///   );
@@ -49,7 +49,7 @@ $z-index: ();
         @if $nested == 1 {
           @return $index;
         } @else if $nested > 1 {
-          @return $nested;
+          @return $nested - 1;
         }
       }
     }

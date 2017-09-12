@@ -5,6 +5,10 @@ Changelog
 ------------------
 
 - BREAKING: All pseudo-elements (box-sizing, cleafix) use proper `::` syntax.
+- BREAKING: Nested items in the `$z-index` list start with `1` rather than `2`,
+  so that `main, nav item dropdown, overlay`
+  will generate indexes of `1, 2 1 2, 3` respectively.
+  This matches more closely the way nested z-indexes work in the browser.
 - BREAKING: Remove `$inherit` option from `box-sizing`
   (because it's a bad idea to inherit box properties).
   You can still replicate the behavior by setting box-sizing on the root,

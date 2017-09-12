@@ -5,7 +5,12 @@
 // Position
 // --------
 /// Shortcut for positioning an element,
-/// using the common TRBL syntax.
+/// using the common `top right bottom left` (TRBL) syntax,
+/// where a single value will be used for all sides,
+/// two values will set vertical/horizontal,
+/// and three values will set top/horizontal/bottom values.
+/// Use `null` for a value to keep it from displaying,
+/// and `auto` or `initial` to reset a given value.
 /// @group position
 /// @param {list} $position [null] -
 ///   A shorthand-syntax of positioning values
@@ -13,16 +18,18 @@
 ///   e.g. `absolute 0 0 3em auto` or `fixed 0 2%`.
 ///   The position value (absolute, relative, etc)
 ///   defaults to `absolute`.
-///   Any `null` values are applied to the side offsets.
 /// @output `top`, `right`, `bottom`, `left`, and `position` properties
 /// @example scss - stretch over the full viewport
 ///   .overlay {
 ///     @include position(fixed 0);
 ///   }
-/// @example scss - top right offset (absolute is implied)
+/// @example scss - top right offset (absolute positioning implied)
 ///   .overlay {
-///     // could also use `null` for bottom & left values…
 ///     @include position(2em 2em auto auto);
+///   }
+/// @example scss - vertical offset without horizontal output
+///   .overlay {
+///     @include position(2em null);
 ///   }
 @mixin position(
   $position: null
