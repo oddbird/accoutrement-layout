@@ -19,7 +19,7 @@
 ///   .overlay {
 ///     @include position(fixed 0);
 ///   }
-/// @example scss - top right offset (absolute is impied)
+/// @example scss - top right offset (absolute is implied)
 ///   .overlay {
 ///     // could also use `null` for bottom & left values…
 ///     @include position(2em 2em auto auto);
