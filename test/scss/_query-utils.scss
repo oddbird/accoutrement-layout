@@ -1,0 +1,83 @@
+// Query Util Tests
+// ================
+
+@import '../../node_modules/accoutrement-scale/sass/scale';
+
+$breakpoints: (
+  'off-canvas': 45em,
+  'recursive': 'off-canvas',
+  'meta': 'recursive',
+  'useful': 'meta',
+  'p-break': 'page',
+);
+
+$sizes: (
+  'off-canvas': 30em,
+  'page': 50em,
+);
+
+
+// Fix Max
+// -------
+@include describe('Fix Max [function]') {
+  @include it('Removes 1px from px values') {
+    @include assert-equal(
+      _fix-max(20px),
+      19px
+    );
+  }
+
+  @include it('Removes 0.01em from em values') {
+    @include assert-equal(
+      _fix-max(20em),
+      19.99em
+    );
+  }
+
+  @include it('Returns non-em/px values unchanged') {
+    @include assert-equal(
+      _fix-max(20ch),
+      20ch
+    );
+  }
+}
+
+
+// Get Breakpoint
+// --------------
+@include describe('Get Breakpoint [function]') {
+  @include it('Explicit length') {
+    @include assert-equal(
+      _get-breakpoint(30em),
+      30em,
+      'Returns an explicit length directly.');
+  }
+
+  @include it('Named breakpoint') {
+    @include assert-equal(
+      _get-breakpoint('off-canvas'),
+      45em,
+      'Returns a named breakpoint from the proper map.');
+  }
+
+  @include it('Recursive breakpoint') {
+    @include assert-equal(
+      _get-breakpoint('useful'),
+      45em,
+      'Returns a recursively named breakpoint.');
+  }
+
+  @include it('Accoutrement-scale definition') {
+    @include assert-equal(
+      _get-breakpoint('page'),
+      50em,
+      'Returns a named size from accoutrement-scale.');
+  }
+
+  @include it('Accoutrement-scale recursive cross-over references') {
+    @include assert-equal(
+      _get-breakpoint('p-break'),
+      50em,
+      'Returns a named size from both maps cross-referenced.');
+  }
+}

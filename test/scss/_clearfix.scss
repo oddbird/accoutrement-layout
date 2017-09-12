@@ -4,15 +4,15 @@
 
 // Clearfix
 // --------
-@include test-module('clearfix [mixin]') {
-  @include test('Clearfix it!') {
+@include describe('clearfix [mixin]') {
+  @include it('Clearfix it!') {
     @include assert('Adds a micro-clearfix to an element') {
       @include output {
         @include clearfix;
       }
 
       @include expect {
-        &:after {
+        &::after {
           clear: both;
           content: ' ';
           display: block;

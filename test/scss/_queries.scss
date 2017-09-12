@@ -1,96 +1,11 @@
 // Media Query Tests
 // =================
 
-@import '../../node_modules/accoutrement-scale/sass/scale';
-
-$breakpoints: (
-  'off-canvas': 45em,
-  'recursive': 'off-canvas',
-  'meta': 'recursive',
-  'useful': 'meta',
-  'p-break': 'page',
-);
-
-$sizes: (
-  'off-canvas': 30em,
-  'page': 50em,
-);
-
-
-// Get Breakpoint
-// --------------
-@include test-module('Get Breakpoint [function]') {
-  @include test('Explicit length') {
-    @include assert-equal(
-      _get-breakpoint(30em),
-      30em,
-      'Returns an explicit length directly.');
-  }
-
-  @include test('Browser Em conversion') {
-    @include assert-equal(
-      _get-breakpoint(800px),
-      50em,
-      'Returns an explicit length converted to browser ems.');
-  }
-
-  @include test('Named breakpoint') {
-    @include assert-equal(
-      _get-breakpoint('off-canvas'),
-      45em,
-      'Returns a named breakpoint from the proper map.');
-  }
-
-  @include test('Recursive breakpoint') {
-    @include assert-equal(
-      _get-breakpoint('useful'),
-      45em,
-      'Returns a recursively named breakpoint.');
-  }
-
-  @include test('Accoutrement-scale definition') {
-    @include assert-equal(
-      _get-breakpoint('page'),
-      50em,
-      'Returns a named size from accoutrement-scale.');
-  }
-
-  @include test('Accoutrement-scale recursive cross-over references') {
-    @include assert-equal(
-      _get-breakpoint('p-break'),
-      50em,
-      'Returns a named size from both maps cross-referenced.');
-  }
-}
-
-
-// Apply Query
-// -----------
-@include test-module('Apply Query [mixin]') {
-  @include test('Applies query, and sets context') {
-    @include assert {
-      @include output {
-        @include _apply-query('Test-Query', '(max-width: 3em)') {
-          @each $key, $value in $accoutrement-query-context {
-            #{$key}: "#{$value}";
-          }
-        }
-      }
-
-      @include expect {
-        @media (max-width: 3em) {
-          Test-Query: "(max-width: 3em)";
-        }
-      }
-    }
-  }
-}
-
 
 // Below
 // -----
-@include test-module('Below [mixin]') {
-  @include test('Applies max-width query, with ~1px subtracted') {
+@include describe('Below [mixin]') {
+  @include it('Applies max-width query, with ~1px subtracted') {
     @include assert {
       @include output {
         @include below(30em) {
@@ -110,8 +25,8 @@ $sizes: (
 
 // Above
 // -----
-@include test-module('Above [mixin]') {
-  @include test('Applies min-width query') {
+@include describe('Above [mixin]') {
+  @include it('Applies min-width query') {
     @include assert {
       @include output {
         @include above(30em) {
@@ -131,8 +46,8 @@ $sizes: (
 
 // Between
 // -------
-@include test-module('Between [mixin]') {
-  @include test('Applies min and max-width queries') {
+@include describe('Between [mixin]') {
+  @include it('Applies min and max-width queries') {
     @include assert {
       @include output {
         @include between(30em, 40em) {
