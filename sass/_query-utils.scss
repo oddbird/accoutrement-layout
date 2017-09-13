@@ -59,7 +59,7 @@
 
   $accoutrement-scale: function-exists('size') and variable-exists('sizes');
 
-  @if $accoutrement-scale and map-get($sizes, $break) {
+  @if $accoutrement-scale and (type-of($break) != 'number') {
     $break: size($break);
   }
 

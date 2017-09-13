@@ -1,10 +1,18 @@
 Changelog
 =========
 
+3.0.2 – 09/13/17
+----------------
+
+- BUGFIX: Allow [accoutrement-scale](http://oddbird.net/accoutrement-scale/)
+  adjustments on breakpoints, when the package is available
+
+
 3.0.1 – 09/13/17
 ----------------
 
 - Update docs.
+
 
 3.0.0 – 09/12/17
 ----------------

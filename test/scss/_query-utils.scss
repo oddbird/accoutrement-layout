@@ -9,6 +9,7 @@ $breakpoints: (
   'meta': 'recursive',
   'useful': 'meta',
   'p-break': 'page',
+  'adjust': 20em ('linear': 2),
 );
 
 $sizes: (
@@ -46,38 +47,45 @@ $sizes: (
 // Get Breakpoint
 // --------------
 @include describe('Get Breakpoint [function]') {
-  @include it('Explicit length') {
+  @include it('Returns an explicit length directly') {
     @include assert-equal(
       _get-breakpoint(30em),
-      30em,
-      'Returns an explicit length directly.');
+      30em
+    );
   }
 
-  @include it('Named breakpoint') {
+  @include it('Returns a named breakpoint from the proper map') {
     @include assert-equal(
       _get-breakpoint('off-canvas'),
-      45em,
-      'Returns a named breakpoint from the proper map.');
+      45em
+    );
   }
 
-  @include it('Recursive breakpoint') {
+  @include it('Returns a recursively named breakpoint') {
     @include assert-equal(
       _get-breakpoint('useful'),
-      45em,
-      'Returns a recursively named breakpoint.');
+      45em
+    );
   }
 
-  @include it('Accoutrement-scale definition') {
+  @include it('Returns a named size from accoutrement-scale') {
     @include assert-equal(
       _get-breakpoint('page'),
-      50em,
-      'Returns a named size from accoutrement-scale.');
+      50em
+    );
   }
 
-  @include it('Accoutrement-scale recursive cross-over references') {
+  @include it('Returns a named size from both maps cross-referenced') {
     @include assert-equal(
       _get-breakpoint('p-break'),
-      50em,
-      'Returns a named size from both maps cross-referenced.');
+      50em
+    );
+  }
+
+  @include it('Allows accoutrement-scale adjustments, when available') {
+    @include assert-equal(
+      _get-breakpoint('adjust'),
+      40em
+    );
   }
 }
