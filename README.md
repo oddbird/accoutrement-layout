@@ -81,4 +81,4 @@ We remove `.09em` or `1px`
 from `max-width` queries,
 to account for media-query overlap issues.
 
-[scale]: http://oddbird.net/accoutrement-scale/sassdoc/
+[scale]: http://oddbird.net/accoutrement-scale/docs/

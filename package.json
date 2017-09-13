@@ -1,12 +1,12 @@
 {
   "name": "accoutrement-layout",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Layout helpers",
   "homepage": "http://oddbird.net/accoutrement-layout/",
   "main": "sass/_layout.scss",
   "repository": {
     "type": "git",
-    "url": "git://github.com/oddbird/accoutrement-layout.git"
+    "url": "https://github.com/oddbird/accoutrement-layout.git"
   },
   "devDependencies": {
     "accoutrement-scale": "^3.0.0",
